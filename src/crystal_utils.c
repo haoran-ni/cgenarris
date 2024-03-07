@@ -140,7 +140,7 @@ void print_layer2file(crystal* xtal, FILE* out_file)
 
 
 
-    fprintf(out_file, "#attempted_spacegroup = %d\n", xtal->spg);
+    fprintf(out_file, "#attempted_layergroup = %d\n", xtal->spg);
 
     char letter = lg_positions[xtal->spg - 1].wyckoff_letter[xtal->wyckoff_position];
     fprintf(out_file, "#attempted_wyckoff_position = %d%c\n", xtal->Z, letter);
@@ -149,9 +149,6 @@ void print_layer2file(crystal* xtal, FILE* out_file)
     strcpy(site_symm, lg_positions[xtal->spg - 1].site_symmetry[xtal->wyckoff_position]);
     fprintf(out_file, "#site_symmetry_group = %s\n",
      site_symm);
-
-    int spglib_spg = detect_spg_using_spglib(xtal);
-    fprintf(out_file, "#SPGLIB_detected_spacegroup = %d\n", spglib_spg);
 
     fprintf(out_file, "#\"All distances in Angstroms and using Cartesian coordinate system\"\n");
 
